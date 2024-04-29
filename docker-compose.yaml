@@ -1,0 +1,9 @@
+version: '1.3.0'
+services:
+  news-app-fe:
+    build: .
+    container_name: news_app_cont
+    ports:
+      - '3000:3000'
+    stdin_open: true
+    tty: true
