@@ -4,7 +4,7 @@ function Footer() {
   return (
     <div className='max-w-[1180px] mx-auto'>
       <div className='my-5'>
-        <p>Copyright © 2024 News App</p>
+        <p>Copyright © Innoscripta 2024 News App</p>
       </div>
     </div>
   )

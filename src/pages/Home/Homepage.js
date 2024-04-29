@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Card from "../../components/card/Card";
 import CardList from "../../components/card/CardList";
 import SearchField from "../../components/searchField/SearchField";
 
@@ -47,7 +46,6 @@ function Homepage() {
       default:
         break;
     }
-    // Here you can use 'from' and 'to' to perform your search or any other operation
   };
   return (
     <div className="container max-w-[1180px] mx-auto">

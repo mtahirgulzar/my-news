@@ -18,14 +18,7 @@ export default function SearchField({
     setIsOpen(!isOpen);
   };
 
-  const handleCategorySelection = (category) => {
-    setSelectedCategory(category);
-    onSearch(category);
-    setQuery("");
-    setFromDate("");
-    setToDate("");
-    toggleDropdown(); // close dropdown after selection if needed
-  };
+ 
   const handleSourceSelection = (source, soucelink) => {
     setSelectedCategory(source);
     setSourceQuery(soucelink);
@@ -33,7 +26,7 @@ export default function SearchField({
     setQuery("");
     setFromDate("");
     setToDate("");
-    toggleDropdown(); // close dropdown after selection if needed
+    toggleDropdown();
   };
 
   useEffect(() => {
@@ -60,13 +53,7 @@ export default function SearchField({
     setToDate("");
     onSearch(query);
   };
-  const categories = [
-    { name: "Science", link: "science" },
-    { name: "Business", link: "business" },
-    { name: "Sports", link: "sports" },
-    { name: "Technology", link: "technology" },
-    { name: "Entertainment", link: "entertainment" },
-  ];
+ 
   const sourcesData = [
     { name: "BBC News", link: "bbc-news" },
     { name: "CNN", link: "cnn" },
@@ -127,7 +114,7 @@ export default function SearchField({
                 <li>
                   <button
                     type="button"
-                    className={`inline-flex w-full px-4 py-2 hover:bg-gray-100 ${
+                    className={`inline-flex w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-900${
                       selectedCategory === "Today" ? "bg-gray-100" : ""
                     }`}
                     onClick={() => {
@@ -142,7 +129,7 @@ export default function SearchField({
                 <li>
                   <button
                     type="button"
-                    className={`inline-flex w-full px-4 py-2 hover:bg-gray-100 ${
+                    className={`inline-flex w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-900${
                       selectedCategory === "This Week" ? "bg-gray-100" : ""
                     } `}
                     onClick={() => {
@@ -157,7 +144,7 @@ export default function SearchField({
                 <li>
                   <button
                     type="button"
-                    className={`inline-flex w-full px-4 py-2 hover:bg-gray-100 ${
+                    className={`inline-flex w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-900${
                       selectedCategory === "This Month" ? "bg-gray-100 " : ""
                     }`}
                     onClick={() => {
@@ -170,31 +157,6 @@ export default function SearchField({
                   </button>
                 </li>
               </div>
-              {/* <li>
-                <div className="font-medium text-gray-900 dark:text-gray-300 ms-2 text-sm">
-                  Category
-                </div>
-                <ul
-                  className="py-2 flex text-sm text-gray-700 dark:text-gray-200"
-                  aria-labelledby="dropdown-button"
-                >
-                  {categories.map((category, index) => (
-                    <li key={index}>
-                      <button
-                        type="button"
-                        className={`inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${
-                          selectedCategory === category.name
-                            ? "bg-gray-100"
-                            : ""
-                        }`}
-                        onClick={() => handleCategorySelection(category.name)}
-                      >
-                        {category.name}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </li> */}
               <li>
                 <div className="font-medium text-gray-900 dark:text-gray-300 ms-2 text-sm">
                   Source
@@ -207,7 +169,7 @@ export default function SearchField({
                     <li key={index}>
                       <button
                         type="button"
-                        className={`inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 ${
+                        className={`inline-flex w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-600 ${
                           selectedCategory == source.name ? "bg-gray-100" : ""
                         } `}
                         onClick={() =>
@@ -222,12 +184,11 @@ export default function SearchField({
               </li>
             </ul>
           </div>
-          {/*                         Select box end             */}
           <div className="relative w-full">
             <input
               type="search"
               id="search-dropdown"
-              className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 dark:text-white "
+              className="block p-2.5 w-full z-20 text-sm !text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 dark:text-white "
               placeholder="Search for Articles by keyword ..."
               required
               value={query}

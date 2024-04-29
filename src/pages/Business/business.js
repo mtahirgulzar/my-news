@@ -5,7 +5,7 @@ import Card from "../../components/stockMarket/Card";
 import { css } from "@emotion/react";
 import { ClipLoader } from "react-spinners";
 
-function Business({ newsData }) {
+function Business() {
   const [news, setNews] = useState();
   const [loading, setLoading] = useState(true);
   const [showMore, setShowMore] = useState(false);
@@ -14,7 +14,6 @@ function Business({ newsData }) {
       let newsAPIKey = process.env.REACT_APP_API_KEY;
       let searchQuery="business"
       let apiUrl;
-      // Fetch general top headlines
       apiUrl = `https://news-nextjs-apis.vercel.app/api/search-news?q=${searchQuery}&apiKey=${newsAPIKey}`;
 
       try {
@@ -29,7 +28,7 @@ function Business({ newsData }) {
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setLoading(false); // Set loading to false when request completes
+        setLoading(false);
       }
     };
 
@@ -84,33 +83,6 @@ function Business({ newsData }) {
       )}
     </>
   );
-}
-
-export async function getServerSideProps() {
-  try {
-    const newsAPIKey = process.env.REACT_APP_API_KEY;
-    const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${newsAPIKey}`;
-    const response = await fetch(apiUrl);
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch news data");
-    }
-
-    const newsData = await response.json();
-
-    return {
-      props: {
-        newsData,
-      },
-    };
-  } catch (error) {
-    console.error("Error fetching news data:", error);
-    return {
-      props: {
-        newsData: null, // Return null or an empty object in case of error
-      },
-    };
-  }
 }
 
 export default Business;

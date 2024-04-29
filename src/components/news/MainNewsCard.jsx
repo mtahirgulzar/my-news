@@ -25,7 +25,6 @@ export default function MainNewsCard({ news, title }) {
           {news?.title && news.title.split(" ").slice(0, 8).join(" ")}
         </h1>
         <p className="text-white font-sans font-lato text-xs font-normal">
-          {/* <span>akbarh{"  "}</span> <span>June 28, 2021</span> */}
           <div className="flex justify-between">
             <p className=" text-sm">
             {formatDate(news.publishedAt)}
